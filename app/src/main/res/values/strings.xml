@@ -1,0 +1,3 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:keep="all">
+    <string name="am_action">abs.message.lib.action</string>
+</resources>
