@@ -1,0 +1,48 @@
+buildscript {
+    ext.kotlin_version = '1.2.31'
+
+    ext.version_build_tools = '27.0.3'
+    
+    ext.version_sdk_compile = 26
+    ext.version_sdk_min = 16
+    ext.version_sdk_target = 26
+
+    ext.version_support_lib = '27.1.1'
+    
+    repositories {
+        jcenter()
+        google()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.1.1'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+        maven {
+            url "https://jitpack.io"
+        }
+        maven {
+            url "https://maven.google.com"
+        }
+        google()
+    }
+}
+
+
+task clean(type: Delete) {
+    println ">>> START DELETE FOLDERS"
+    def f
+    for(def a : rootProject.allprojects){
+        f = a.buildDir
+        delete f
+        println "DELETE ${f.absolutePath}"
+    }
+    println ">>> FINISH DELETE FOLDERS"
+}
